@@ -55,3 +55,13 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function getComments(productId) {
+  return JSON.parse(localStorage.getItem(`comments-${productId}`)) || [];
+}
+
+export function saveComment(productId, comment) {
+  const comments = getComments(productId);
+  comments.push(comment);
+  localStorage.setItem(`comments-${productId}`, JSON.stringify(comments));
+}
