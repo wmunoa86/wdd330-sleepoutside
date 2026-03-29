@@ -261,3 +261,101 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Checkout form styles */
+.checkout {
+  padding: 1rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+.checkout-section {
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkout-section legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+  color: var(--secondary-color);
+}
+
+.checkout-section label {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: var(--small-font);
+  font-weight: bold;
+}
+
+.checkout-section input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: var(--font-base);
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  margin-top: 0.25rem;
+
+  &:focus {
+    outline: 2px solid var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+
+  &:invalid:not(:placeholder-shown) {
+    border-color: #c0392b;
+  }
+}
+
+.order-summary p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25rem 0;
+  padding: 0.25rem 0;
+}
+
+.order-total-line {
+  border-top: 2px solid var(--primary-color);
+  font-weight: bold;
+  font-size: var(--large-font);
+  margin-top: 0.5rem !important;
+  padding-top: 0.5rem !important;
+}
+
+.error-message {
+  display: none;
+  background-color: #fde8e8;
+  color: #c0392b;
+  border: 1px solid #c0392b;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+
+  &.show {
+    display: block;
+  }
+}
+
+/* Success page */
+.success-page {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.success-page h2 {
+  color: var(--secondary-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.button-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5em 2em;
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+  font-size: var(--large-font);
+  border-radius: 4px;
+}
