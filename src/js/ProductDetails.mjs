@@ -11,9 +11,13 @@ export default class ProductDetails {
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails();
     this.renderComments();
+    this.updateWishlistButton();
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addProductToCart.bind(this));
+    document
+      .getElementById("addToWishlist")
+      .addEventListener("click", this.toggleWishlist.bind(this));
     document
       .getElementById("comment-form")
       .addEventListener("submit", this.handleCommentSubmit.bind(this));
@@ -23,6 +27,29 @@ export default class ProductDetails {
     const cart = getLocalStorage("so-cart") || [];
     cart.push(this.product);
     setLocalStorage("so-cart", cart);
+  }
+
+  toggleWishlist() {
+    const wishlist = getLocalStorage("so-wishlist") || [];
+    const exists = wishlist.find((p) => p.Id === this.product.Id);
+    if (exists) {
+      setLocalStorage(
+        "so-wishlist",
+        wishlist.filter((p) => p.Id !== this.product.Id)
+      );
+    } else {
+      wishlist.push(this.product);
+      setLocalStorage("so-wishlist", wishlist);
+    }
+    this.updateWishlistButton();
+  }
+
+  updateWishlistButton() {
+    const wishlist = getLocalStorage("so-wishlist") || [];
+    const btn = document.getElementById("addToWishlist");
+    const exists = wishlist.find((p) => p.Id === this.product.Id);
+    btn.textContent = exists ? "Remove from Wishlist" : "Add to Wishlist";
+    btn.classList.toggle("in-wishlist", !!exists);
   }
 
   renderProductDetails() {
